@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-md-3 sidebar">
+      <!--sidebar menu -->
+      <div class="row logo-box">
+        <div class="col-md-3">
+          <img class="logo" src="../../../assets/img/logo.png" alt="">
+        </div>
+        <!-- 9 spaces col with usuario.name and usuario.email inside with h3 elements-->
+        <div class="col-md-9">
+          <h3 class="usuario-name">{{usuario.nombre}}</h3>
+          <h3 class="usuario-email">{{usuario.email}}</h3>
+        </div>
+      </div>
+
+      <div class="list-group">
+        <a  [routerLink]="['home']" class="list-group-item">
+          <h4 class="list-group-item-heading">
+            <i class="fa fa-tachometer-alt" aria-hidden="true"></i>
+            Inicio
+          </h4>
+        </a>
+
+        <a *ngFor="let menu_item of menu"  class="list-group-item" [class.submenu]="menu_item.type == 'simple'" [class.headermenu]="menu_item.type=='group'">
+          <h4 *ngIf="menu_item.type == 'simple'" class="list-group-item-heading"  [routerLink]="[menu_item.link]">
+            <i class="{{menu_item.icon}}" aria-hidden="true"></i>
+            {{menu_item.name}}
+          </h4>
+          <h2  *ngIf="menu_item.type== 'group'" > {{ menu_item.name }} </h2>
+        </a>
+
+        <a href="#" (click)="logOut()" class="list-group-item ">
+          <h4 class="list-group-item-heading mt-3">
+            <!-- logout icon -->
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            Cerrar sesión
+          </h4>
+        </a>
+
+
+      </div>
+    </div>
+    <div class="col-md-9 site-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

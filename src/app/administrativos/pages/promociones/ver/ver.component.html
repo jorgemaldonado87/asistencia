@@ -1,0 +1,114 @@
+<div class="row">
+  <div class="col-md-12 title">
+    <!-- card with h3 title inside -->
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Promoción {{ promocion?.ano }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 content">
+    <div class="card">
+
+      <div class="card-body">
+        <form [formGroup]="formViewPromocion">
+          <div class="row">
+            <!-- ano -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="ano">Año</label>
+                <input type="text" class="form-control" id="ano" formControlName="ano" placeholder="Año de promoción">
+              </div>
+            </div>
+            <!--periodo -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="name">Periodo</label>
+                <input type="text" class="form-control" id="periodo" formControlName="periodo" placeholder="periodo">
+                <!-- validations -->
+                <div class="invalid-feedback">
+                  <div *ngIf="formViewPromocion.get('periodo')?.errors?.required">
+                    El periodo es requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 6 spaces column for fecha_desde -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="fecha_desde">Fecha Desde</label>
+                <input type="date" class="form-control" id="fecha_desde" formControlName="fecha_desde"
+                  placeholder="Fecha Desde">
+                <!-- validations -->
+                <div class="invalid-feedback">
+                  <div *ngIf="formViewPromocion.get('fecha_desde')?.errors?.required">
+                    La fecha desde es requerida
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 6 spaces column for fecha_hasta -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="fecha_hasta">Fecha Hasta</label>
+                <input type="date" class="form-control" id="fecha_hasta" formControlName="fecha_hasta"
+                  placeholder="Fecha Hasta">
+                <!-- validations -->
+                <div class="invalid-feedback">
+                  <div *ngIf="formViewPromocion.get('fecha_hasta')?.errors?.required">
+                    La fecha hasta es requerida
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- cursos list table -->
+          <!-- cursos has  id, nombre, tipo_curso -->
+
+
+          <!-- 12 spaces col with Crear Usuario button inside -->
+          <!-- <div class="col-md-12">
+            <button (click)="onSubmit()" class="btn btn-success" style="float:right; width:100%; margin-top:2%">Crear
+              Periodo</button>
+          </div> -->
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="row" style="margin-top:20px;">
+  <div class="col-md-12 title">
+    <!-- card with h3 title inside -->
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Cursos</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 content">
+    <!-- table of  promocion.cursos -->
+    <!-- curso has  nombre -->
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Tipo Curso</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let curso of promocion?.cursos">
+          <td>{{ curso.nombre }}</td>
+          <td>{{ curso.tipo_curso.nombre }}</td>
+          <!-- view button -->
+          <td>
+            <button class="btn btn-primary" [routerLink]="['/promociones_curso/'+curso.id+'/'+promocion.id_promocion]" >Ver</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

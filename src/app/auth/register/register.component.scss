@@ -1,0 +1,30 @@
+.row {
+
+  height: 100% !important;
+  //align items vertically center
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container-fluid {
+  background-color: #000911 !important;
+  height: 100% !important;
+}
+.logo-col {
+  text-align: center;
+  margin-bottom: 5%;
+}
+
+//set login button margin top and green background
+.login-btn {
+  margin-top: 5%;
+  background-color: #00a8ff !important;
+}
+//set login button margin top and green background
+.register-btn {
+  margin-top: 5%;
+  background-color: #ff00b3 !important;
+}
+.card-title{
+  text-align: center;
+}

@@ -1,0 +1,99 @@
+<div class="row">
+  <div class="col-md-12 title">
+    <!-- card with h3 title inside -->
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Panel principal</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12 mt-3">
+    <div class="row">
+      <div class="col-md-6">
+        <!-- select bloques -->
+        <!-- use ngFor -->
+        <div class="card card-primary">
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Seleccione un bloque</label>
+                  <select  [(ngModel)]="bloque" (change)="loadData()">
+                    <option value="">Seleccione un bloque</option>
+                    <option *ngFor="let bloqueAux of bloques" [value]="bloqueAux.id_bloques">{{bloqueAux.nombre}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-6">
+        <!-- date picker -->
+        <div class="card card-primary">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="fecha">Seleccione una fecha</label>
+                  <input type="date" [(ngModel)]="fecha"
+                    (change)="loadData()" >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12 mt-3">
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Porcentaje Asistencia</h3>
+          </div>
+          <div class="card-body">
+            <!-- chartJs canvas -->
+            <canvas baseChart [data]="pieChartData" [type]="pieChartType" [options]="pieChartOptions">
+            </canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Presentes/Total</h3>
+          </div>
+          <div class="card-body">
+            <!-- success card with alumnos Presente-->
+            <div class="card bg-success mt-2">
+
+              <div class="card-body">
+                <h1 class="card-text text-white">{{current_data.presentes}} Presentes</h1>
+              </div>
+            </div>
+            <!-- danger card with alumnos Presente-->
+            <div class="card  bg-danger mt-2">
+              <div class="card-body">
+                <h1 class="card-text text-white">{{current_data.ausentes}} Ausentes</h1>
+              </div>
+            </div>
+            <!-- danger card with alumnos Presente-->
+            <div class="card  bg-warning mt-2">
+              <div class="card-body">
+                <h1 class="card-text text-white">{{current_data.pendientes}} Pendientes</h1>
+              </div>
+            </div>
+            <!-- -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

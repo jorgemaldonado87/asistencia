@@ -1,0 +1,185 @@
+<div class="row">
+  <div class="col-md-12 title">
+    <!-- card with h3 title inside -->
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title">Matricular Alumnos en Curso</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+
+  <!-- 6 spaces col  with promocion info inside a car -->
+  <!-- use labels and h6 to show info -->
+  <!-- promocion has ano, periodo, fecha_desde, fecha_hasta -->
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div class="card">
+      <div class="card-header">
+        <h5>
+          <i class="fa fa-book"></i>
+          Información de la promoción
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+              <label for="ano">Año</label>
+              <h6>{{promocionAux?.ano}}</h6>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+              <label for="periodo">Periodo</label>
+              <h6>{{promocionAux?.periodo}}</h6>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+              <label for="fecha_desde">Fecha desde</label>
+              <h6>{{promocionAux?.fecha_desde | date:'Y-MM-d'}}</h6>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+              <label for="fecha_hasta">Fecha hasta</label>
+              <h6>{{promocionAux?.fecha_hasta | date:'Y-M-d' }}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 spaces col  with curso info inside a car -->
+  <!-- use labels and h6 to show info -->
+  <!-- curso has nombre, tipo_curso[0].nombre -->
+  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div class="card">
+      <div class="card-header">
+        <h5>
+          <i class="fa fa-book"></i>
+          Información del curso
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <h6>{{cursoAux?.nombre}}</h6>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <label for="tipo_curso">Tipo de curso</label>
+              <h6>{{cursoAux?.tipo_curso.nombre}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row mt-4" *ngIf="modo==0">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5>
+          Seleccione una opción de matrícula:
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-3 text-center">
+            <!-- button 'Promoción Anterior' -->
+            <button (click)="obtenerUltimaPromocion()" class="btn btn-success btn-block">
+              <i class="fa fa-arrow-left"></i>
+              <br>
+              Promoción Anterior
+            </button>
+          </div>
+          <!--manual mode column -->
+          <div class="col-md-3 text-center">
+            <!-- button 'Matricular manualmente' -->
+            <button class="btn btn-primary btn-block">
+              <!-- pencil icon-->
+              <i class="fa fa-pencil"></i>
+              <br>
+              Matricular manualmente
+            </button>
+          </div>
+          <!-- qualificacion mode column -->
+          <div class="col-md-3 text-center">
+            <!-- button 'Matricular por calificación' -->
+            <button class="btn btn-primary btn-block">
+              <i class="fa fa-user-plus"></i>
+              <br>
+              Matricular Automaticamente
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4" *ngIf="modo==1">
+ <!-- 12 spaces column with usuarios_curso of this curso and promocion -->
+    <!-- usuarios_curso has rut, nombre, apellido_paterno, apellido_materno-->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-xl-6">
+              <h5>
+                <i class="fa fa-users"></i>
+                Alumnos del Curso
+              </h5>
+            </div>
+            <div class="col-xl-6">
+              <!-- button 'Tomar lista'-->
+              <button class="btn btn-success" style="float:right;" (click)="matricular()">
+                <i class="fa fa-list"></i>
+                Matricular
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>Rut</th>
+                      <th>Nombre</th>
+                      <th>Seleccionar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr *ngFor="let usuario_curso of usuarios_curso">
+                      <td>{{usuario_curso.usuario?.rut}}</td>
+                      <td>{{usuario_curso.usuario?.nombre}} {{usuario_curso.usuario?.apellido_paterno}} {{usuario_curso.usuario?.apellido_materno}}</td>
+                      <td class="text-center">
+                        <!-- checkbox to select user -->
+                        <input type="checkbox" class="check" name="usuario_curso" value="{{usuario_curso.matricular}}" [(ngModel)]="usuario_curso.matricular"  />
+                      </td>
+                    </tr>
+                  </tbody>
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

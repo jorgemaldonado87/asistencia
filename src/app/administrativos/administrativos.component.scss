@@ -1,0 +1,82 @@
+//set .sidebar padding 0 margin 0
+.sidebar {
+  padding: 0;
+  margin: 0;
+  background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+}
+.logo {
+  width: 100%;
+}
+//set .list-group background-color transparent
+.list-group {
+  margin-top: 3%;
+  .list-group-item {
+    margin: 0px!important;
+    color: white;
+    background-color: transparent;
+  }
+  .list-group-item:hover{
+    color:yellow;
+  }
+  background-color: transparent;
+}
+.logo-box {
+
+  padding: 3%;
+  color: #fff;
+  .usuario-name{
+    margin-top: 5%;
+    font-size: 1.3em;
+  }
+  .usuario-email{
+    font-size: 1.1em;
+    color: rgb(214, 179, 64)!important;
+  }
+}
+.container-fluid {
+  overflow-y: hidden;
+  .content {
+    height: 100%;
+  }
+  height: 100%;
+}
+//set .site-content padding 5%
+.site-content {
+  padding: 2%;
+}
+
+
+.submenu{
+  color: rgb(255, 255, 255)!important;
+  margin: 0px!important;
+  h4{
+    font-size: 1.3em;
+    margin: 0px!important;
+  }
+}
+.headermenu{
+  h2{
+    margin: 0px!important;
+    font-size: 1em;
+  }
+  color: rgb(214, 179, 64)!important;
+  margin: 0px!important;
+}
+
+a{
+  border: 0px!important;
+  color: white!important;
+  .list-group-item-heading{
+    font-weight:  350!important;
+  }
+  //list group item heading hover
+  .list-group-item-heading:hover{
+    color: rgb(214, 179, 64)!important;;
+    font-weight:  bold!important;
+  }
+}
+
+.site-content{
+  max-height: 100%!important;
+  overflow-y: auto!important;
+}

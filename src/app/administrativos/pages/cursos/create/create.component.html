@@ -1,0 +1,31 @@
+<!-- row with col inside -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Crear Curso</h3>
+      </div>
+      <div class="card-body">
+
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input [(ngModel)]="curso.nombre" type="text" class="form-control" id="name"
+              placeholder="Nombre del tipo de curso">
+          </div>
+
+          <!-- select tipo_curso of tipo_cursos -->
+          <div class="form-group">
+            <label for="tipo_curso">Tipo de Curso</label>
+            <select [(ngModel)]="curso.tipo_curso_id" class="form-control" id="tipo_curso">
+              <option *ngFor="let tipo_curso of tipo_cursos" [value]="tipo_curso.id_tipo_curso">
+                {{tipo_curso.nombre}}
+              </option>
+            </select>
+          </div>
+
+          <!-- create button -->
+          <button class="btn btn-primary" style="float:right; margin-top: 10px;" (click)="createCurso()" >Crear</button>
+      </div>
+    </div>
+  </div>
+</div>

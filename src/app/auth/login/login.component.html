@@ -1,0 +1,78 @@
+<!-- div class container-fluid -->
+<div class="container-fluid">
+  <!-- div row -->
+  <div class="row">
+    <!-- div col-md-4 -->
+
+    <div class="col-md-4">
+      <div class="row">
+        <div class="col-md-12 logo-col">
+          <!-- img from /assets/img/logo.png -->
+          <img src="assets/img/logo.png" alt="logo" class="img-fluid ">
+        </div>
+      </div>
+
+
+      <!-- div card -->
+      <div class="card p-4">
+
+        <!-- div card-header -->
+        <div class="card-header b-0">
+          <!-- h4 card-title -->
+          <h4 class="card-title ">Ingresar al Sistema</h4>
+        </div>
+        <!-- /div card-header -->
+        <!-- div card-body -->
+        <div class="card-body">
+          <!-- form -->
+
+          <!-- div form-group for email -->
+          <div class="form-group">
+            <!-- label for="email" -->
+            <label for="email">Correo electrónico</label>
+            <!-- input type="email" class="form-control" id="email" -->
+            <input [(ngModel)]="user.email" type="email" class="form-control" id="email" placeholder="admin@admin.net">
+            <div class="form-control-feedback">
+              <!-- i class="fa fa-envelope-o" -->
+              <i class="fa fa-envelope-o"></i>
+            </div>
+            <!-- /div form-control-feedback -->
+          </div>
+          <!-- /div form-group -->
+          <!-- div form-group for password -->
+          <div class="form-group">
+            <!-- label for="password" -->
+            <label for="password">Contraseña</label>
+            <!-- input type="password" class="form-control" id="password" -->
+            <input [(ngModel)]="user.password" type="password" class="form-control" id="password"
+              placeholder="Ingrese su contraseña">
+
+          </div>
+          <!-- /div form-group -->
+          <!-- buttons to login, register-->
+
+
+          <div class="row mt-3">
+            <div class="col-md-6 text-left">
+              <button class="btn btn-success btn-block mt-2 " style="float:left; font-size: 1.2em;" (click)="login()">Iniciar Sesión</button>
+              <!-- button class="btn btn-primary btn-block" -->
+
+              <!-- button for register -->
+            </div>
+            <div class="col-md-6 text-right">
+              <label>¿No tienes cuenta? <a class="text-secondary">Regístrate.</a></label>
+
+              <!-- button class="btn btn-primary btn-block" -->
+            </div>
+          </div>
+          <!-- /form -->
+        </div>
+        <!-- /div card-body -->
+      </div>
+      <!-- /div card -->
+    </div>
+    <!-- /div col-md-4 -->
+  </div>
+  <!-- /div row -->
+
+</div>

@@ -1,0 +1,21 @@
+<!-- row with col inside -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Crear Tipo de Usuario</h3>
+      </div>
+      <div class="card-body">
+
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input [(ngModel)]="tipo_usuario.nombre" type="text" class="form-control" id="name"
+              placeholder="Nombre del tipo de usuario">
+          </div>
+
+          <!-- create button -->
+          <button class="btn btn-primary" style="float:right; margin-top: 10px;" (click)="createTipoUsuario()" >Crear</button>
+      </div>
+    </div>
+  </div>
+</div>

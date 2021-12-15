@@ -1,0 +1,130 @@
+<div *ngIf="tomarLista && !listaTomada" class="row" style="height: 100%;">
+  <div class="col-md-10 offset-1  d-flex"
+  style="background-color: #d6956f;
+  background-image: linear-gradient(62deg, #d6956f 0%, #d2b15a 100%);
+
+
+   border-radius: 15%;
+     color:white; height: 100%;">
+
+
+
+    <div class="align-self-center " style="text-align:center; width:100%;">
+      <h1 class="text-center text-white mb-5">Profesor: {{current_profesor.nombre }} {{current_profesor.apellido}}</h1>
+      <h1 class="text-center">{{current_user?.usuario?.nombre | uppercase}} {{current_user?.usuario?.apellido_paterno |
+        uppercase}} {{current_user?.usuario?.apellido_materno | uppercase}}</h1>
+        <h1 class="text-center">{{current_user?.usuario?.rut}}</h1>
+      <div class="row mt-5">
+        <div class="col-xl-6 " style="text-align: right!important;">
+          <!-- button  danger with "Ausente" text -->
+          <button type="button" class=" act-btn btn btn-danger btn-lg btn-block" (click)="cambiarEstado(false)">
+            <!-- fa icon check -->
+            <i class="fa fa-times"></i>
+            Ausente
+          </button>
+        </div>
+        <div class="col-xl-6" style="text-align: left!important;">
+          <!-- button  success with "Presente" text -->
+          <button type="button" class=" act-btn btn btn-success btn-lg btn-block" (click)="cambiarEstado(true)">
+            <!-- fa icon check -->
+            <i class="fa fa-check"></i>
+            Presente
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<div *ngIf="!tomarLista && !listaTomada" class="row">
+  <div class="col-xl-12">
+    <h2>Seleccionar bloque</h2>
+    <div class="row mt-3">
+      <div class="col-xl-2" *ngFor="let bloque of bloques">
+        <div class="card" (click)="current_bloque = bloque" [class.selected]="current_bloque === bloque">
+          <div class="card-body p-4">
+            <h6>{{bloque.nombre}}</h6>
+            <h6>{{bloque.hora_inicio}} - {{bloque.hora_fin}}</h6>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="col-xl-12">
+    <h2>Seleccionar asignatura</h2>
+    <div class="row mt-3">
+      <div class="col-xl-2 mt-2" *ngFor="let asignatura of asignaturas">
+        <div class="card" (click)="current_asignatura = asignatura"
+          [class.selected_1]="current_asignatura === asignatura">
+          <div class="card-body p-4">
+            <h6>{{asignatura.nombre}}</h6>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-xl-12 mt-3">
+    <h2>Buscar profesor</h2>
+    <div class="card mt-3">
+      <div class="card-body">
+        <div class="row mt-3" *ngIf="!current_profesor">
+          <div class="col-xl-6">
+            <!-- input for RUT profesor-->
+            <input type="text" class="form-control" placeholder="RUT profesor" [(ngModel)]="rutProfesor">
+          </div>
+          <div class="col-xl-6">
+            <button class="btn btn-outline-secondary" (click)="buscarProfesor()" type="button">
+              <!-- fa search icon -->
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <h2 *ngIf="current_profesor">
+          {{current_profesor?.nombre | uppercase}} {{current_profesor?.apellido_paterno | uppercase}}
+          {{current_profesor?.apellido_materno | uppercase}}
+        </h2>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+  <div class="col-xl-12 mt-3 ">
+    <!-- button to continue to "Tomar Lista" -->
+    <button type="button" (click)="tomarLista = true" class="btn btn-success btn-lg btn-block" style="float:right;"
+      [disabled]="!(current_profesor && current_asignatura && current_bloque)">Tomar Lista</button>
+  </div>
+
+</div>
+
+<div class="col-xl-12 " *ngIf="listaTomada">
+  <!-- list of listaTomadaAux with a table -->
+  <!-- every listaTomada has alumno ,status -->
+  <table class="table table-hover table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Alumno</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let alumno of listaTomadaAux">
+        <td>{{alumno?.alumno?.nombre}} {{alumno?.alumno?.apellido_paterno}}
+          {{alumno?.alumno?.apellido_materno}}</td>
+        <td *ngIf="alumno.status == 1" style="color: green;">Presente</td>
+        <td *ngIf="alumno.status == 0" style="color: red;">Ausente</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
